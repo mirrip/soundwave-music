@@ -4,41 +4,30 @@
  */
 
 // ================================
-// Sample Data
+// Sample Tracks (with real audio URLs)
 // ================================
 
-const SAMPLE_ALBUMS = [
-    { id: 1, title: 'Midnight Sessions', artist: 'The Night Owls', cover: null, year: 2024 },
-    { id: 2, title: 'Summer Vibes', artist: 'Sunset Collective', cover: null, year: 2024 },
-    { id: 3, title: 'Electronic Dreams', artist: 'Synth Wave', cover: null, year: 2023 },
-    { id: 4, title: 'Acoustic', artist: 'Guitar Stories', cover: null, year: 2024 },
-    { id: 5, title: 'Hip-Hop Beats', artist: 'Urban Flow', cover: null, year: 2024 },
-    { id: 6, title: 'Chill Out', artist: 'Lounge Masters', cover: null, year: 2023 },
-    { id: 7, title: 'Rock Anthems', artist: 'The Thunder', cover: null, year: 2024 },
-    { id: 8, title: 'Jazz Nights', artist: 'Smooth Quartet', cover: null, year: 2023 }
-];
-
 const SAMPLE_TRACKS = [
-    { id: 1, title: 'Midnight in Tokyo', artist: 'The Night Owls', album: 'Midnight Sessions', duration: 234, cover: null, genre: 'Electronic' },
-    { id: 2, title: 'Neon Lights', artist: 'Synth Wave', album: 'Electronic Dreams', duration: 198, cover: null, genre: 'Electronic' },
-    { id: 3, title: 'Summer Sunset', artist: 'Sunset Collective', album: 'Summer Vibes', duration: 245, cover: null, genre: 'Pop' },
-    { id: 4, title: 'Ocean Breeze', artist: 'Lounge Masters', album: 'Chill Out', duration: 267, cover: null, genre: 'Ambient' },
-    { id: 5, title: 'Guitar Man', artist: 'Guitar Stories', album: 'Acoustic', duration: 189, cover: null, genre: 'Acoustic' },
-    { id: 6, title: 'Street Flow', artist: 'Urban Flow', album: 'Hip-Hop Beats', duration: 213, cover: null, genre: 'Hip-Hop' },
-    { id: 7, title: 'Thunder Road', artist: 'The Thunder', album: 'Rock Anthems', duration: 278, cover: null, genre: 'Rock' },
-    { id: 8, title: 'Smooth Jazz', artist: 'Smooth Quartet', album: 'Jazz Nights', duration: 302, cover: null, genre: 'Jazz' },
-    { id: 9, title: 'Digital Love', artist: 'Synth Wave', album: 'Electronic Dreams', duration: 224, cover: null, genre: 'Electronic' },
-    { id: 10, title: 'Dancing in Rain', artist: 'The Night Owls', album: 'Midnight Sessions', duration: 256, cover: null, genre: 'Electronic' },
-    { id: 11, title: 'Beach Party', artist: 'Sunset Collective', album: 'Summer Vibes', duration: 198, cover: null, genre: 'Pop' },
-    { id: 12, title: 'Mountain Echo', artist: 'Guitar Stories', album: 'Acoustic', duration: 234, cover: null, genre: 'Acoustic' },
-    { id: 13, title: 'City Nights', artist: 'Urban Flow', album: 'Hip-Hop Beats', duration: 245, cover: null, genre: 'Hip-Hop' },
-    { id: 14, title: 'Calm Waters', artist: 'Lounge Masters', album: 'Chill Out', duration: 289, cover: null, genre: 'Ambient' },
-    { id: 15, title: 'Electric Storm', artist: 'Synth Wave', album: 'Electronic Dreams', duration: 267, cover: null, genre: 'Electronic' },
-    { id: 16, title: 'Fire and Rain', artist: 'The Thunder', album: 'Rock Anthems', duration: 312, cover: null, genre: 'Rock' },
-    { id: 17, title: 'Moonlight Serenade', artist: 'Smooth Quartet', album: 'Jazz Nights', duration: 278, cover: null, genre: 'Jazz' },
-    { id: 18, title: 'Golden Hour', artist: 'Sunset Collective', album: 'Summer Vibes', duration: 223, cover: null, genre: 'Pop' },
-    { id: 19, title: 'Tokyo Nights', artist: 'The Night Owls', album: 'Midnight Sessions', duration: 267, cover: null, genre: 'Electronic' },
-    { id: 20, title: 'Morning Coffee', artist: 'Lounge Masters', album: 'Chill Out', duration: 198, cover: null, genre: 'Ambient' }
+    { id: 1, title: 'Midnight in Tokyo', artist: 'The Night Owls', album: 'Midnight Sessions', duration: 234, cover: null, genre: 'Electronic', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+    { id: 2, title: 'Neon Lights', artist: 'Synth Wave', album: 'Electronic Dreams', duration: 198, cover: null, genre: 'Electronic', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+    { id: 3, title: 'Summer Sunset', artist: 'Sunset Collective', album: 'Summer Vibes', duration: 245, cover: null, genre: 'Pop', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+    { id: 4, title: 'Ocean Breeze', artist: 'Lounge Masters', album: 'Chill Out', duration: 267, cover: null, genre: 'Ambient', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
+    { id: 5, title: 'Guitar Man', artist: 'Guitar Stories', album: 'Acoustic', duration: 189, cover: null, genre: 'Acoustic', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
+    { id: 6, title: 'Street Flow', artist: 'Urban Flow', album: 'Hip-Hop Beats', duration: 213, cover: null, genre: 'Hip-Hop', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
+    { id: 7, title: 'Thunder Road', artist: 'The Thunder', album: 'Rock Anthems', duration: 278, cover: null, genre: 'Rock', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3' },
+    { id: 8, title: 'Smooth Jazz', artist: 'Smooth Quartet', album: 'Jazz Nights', duration: 302, cover: null, genre: 'Jazz', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3' },
+    { id: 9, title: 'Digital Love', artist: 'Synth Wave', album: 'Electronic Dreams', duration: 224, cover: null, genre: 'Electronic', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3' },
+    { id: 10, title: 'Dancing in Rain', artist: 'The Night Owls', album: 'Midnight Sessions', duration: 256, cover: null, genre: 'Electronic', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3' },
+    { id: 11, title: 'Beach Party', artist: 'Sunset Collective', album: 'Summer Vibes', duration: 198, cover: null, genre: 'Pop', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3' },
+    { id: 12, title: 'Mountain Echo', artist: 'Guitar Stories', album: 'Acoustic', duration: 234, cover: null, genre: 'Acoustic', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3' },
+    { id: 13, title: 'City Nights', artist: 'Urban Flow', album: 'Hip-Hop Beats', duration: 245, cover: null, genre: 'Hip-Hop', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3' },
+    { id: 14, title: 'Calm Waters', artist: 'Lounge Masters', album: 'Chill Out', duration: 289, cover: null, genre: 'Ambient', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3' },
+    { id: 15, title: 'Electric Storm', artist: 'Synth Wave', album: 'Electronic Dreams', duration: 267, cover: null, genre: 'Electronic', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3' },
+    { id: 16, title: 'Fire and Rain', artist: 'The Thunder', album: 'Rock Anthems', duration: 312, cover: null, genre: 'Rock', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3' },
+    { id: 17, title: 'Moonlight Serenade', artist: 'Smooth Quartet', album: 'Jazz Nights', duration: 278, cover: null, genre: 'Jazz', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+    { id: 18, title: 'Golden Hour', artist: 'Sunset Collective', album: 'Summer Vibes', duration: 223, cover: null, genre: 'Pop', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+    { id: 19, title: 'Tokyo Nights', artist: 'The Night Owls', album: 'Midnight Sessions', duration: 267, cover: null, genre: 'Electronic', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+    { id: 20, title: 'Morning Coffee', artist: 'Lounge Masters', album: 'Chill Out', duration: 198, cover: null, genre: 'Ambient', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' }
 ];
 
 // ================================
@@ -143,11 +132,7 @@ function cacheElements() {
 // ================================
 
 function setupAudio() {
-    // Create oscillator-based "music" experience
-    // Since we can't load actual audio files, we'll simulate playback
     elements.audioElement = elements.audioPlayer;
-    
-    // We'll use visual/audio simulation
     elements.audioPlayer.volume = state.volume / 100;
     
     // Audio events
@@ -156,22 +141,38 @@ function setupAudio() {
     elements.audioPlayer.addEventListener('loadedmetadata', () => {
         elements.totalTime.textContent = formatTime(elements.audioPlayer.duration);
     });
+    
+    // Audio loading events for visual feedback
+    elements.audioPlayer.addEventListener('waiting', () => {
+        showLoadingIndicator(true);
+    });
+    
+    elements.audioPlayer.addEventListener('playing', () => {
+        showLoadingIndicator(false);
+    });
+    
+    elements.audioPlayer.addEventListener('error', (e) => {
+        console.error('Audio error:', e);
+        showLoadingIndicator(false);
+    });
 }
 
-// Simulate play (since we don't have actual audio files)
-function simulatePlay() {
-    state.isPlaying = true;
-    updatePlayButton();
-    startProgressSimulation();
-}
-
-function simulatePause() {
-    state.isPlaying = false;
-    updatePlayButton();
-    stopProgressSimulation();
-}
+let loadingIndicator = null;
 
 let progressInterval = null;
+
+function showLoadingIndicator(show) {
+    if (!state.currentTrack) return;
+    
+    const trackRow = document.querySelector(`.track-row[data-track-id="${state.currentTrack.id}"]`);
+    if (!trackRow) return;
+    
+    if (show) {
+        trackRow.classList.add('track-row--loading');
+    } else {
+        trackRow.classList.remove('track-row--loading');
+    }
+}
 
 function startProgressSimulation() {
     if (progressInterval) clearInterval(progressInterval);
@@ -180,7 +181,7 @@ function startProgressSimulation() {
     state.progress = 0;
     
     progressInterval = setInterval(() => {
-        if (state.isPlaying && state.currentTrack) {
+        if (state.isPlaying && state.currentTrack && elements.audioPlayer.paused) {
             state.progress += 1;
             
             if (state.progress >= totalDuration) {
@@ -248,13 +249,18 @@ function playTrack(track) {
     // Add to recently played
     addToRecentlyPlayed(track);
     
-    // Start playback
-    if (state.isPlaying) {
-        simulatePlay();
-    } else {
-        state.isPlaying = true;
-        simulatePlay();
+    // Load and play real audio
+    if (track.audioUrl) {
+        elements.audioPlayer.src = track.audioUrl;
+        elements.audioPlayer.play().catch(e => {
+            console.error('Playback error:', e);
+        });
     }
+    
+    // Start playback
+    state.isPlaying = true;
+    updatePlayButton();
+    startProgressSimulation();
     
     // Update UI
     highlightCurrentTrack();
@@ -271,10 +277,15 @@ function togglePlay() {
     }
     
     if (state.isPlaying) {
-        simulatePause();
+        elements.audioPlayer.pause();
+        state.isPlaying = false;
     } else {
-        simulatePlay();
+        if (elements.audioPlayer.src) {
+            elements.audioPlayer.play().catch(e => console.error('Play error:', e));
+        }
+        state.isPlaying = true;
     }
+    updatePlayButton();
 }
 
 function nextTrack() {
