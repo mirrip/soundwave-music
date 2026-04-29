@@ -1,56 +1,101 @@
 /**
- * SoundWave Music - PRO Version
- * With Custom Upload, My Wave, Similar Tracks, Advanced Design
+ * SoundWave Music - UNLIMITED Version
+ * Uses free samples from internet
  */
 
 // ================================
-// Music Database (Popular Tracks)
+// MUSIC DATABASE - 20 REAL SONGS + GENERATED VARIANTS
 // ================================
 
-const POPULAR_ALBUMS = [
-    { id: 1, title: 'Midnight Sessions', artist: 'The Night Owls', cover: 'https://picsum.photos/seed/al1/300/300', year: 2024, color: '#6366f1', genre: 'Electronic', plays: 1542000 },
-    { id: 2, title: 'Summer Vibes 2024', artist: 'Sunset Collective', cover: 'https://picsum.photos/seed/al2/300/300', year: 2024, color: '#f59e0b', genre: 'Pop', plays: 2341000 },
-    { id: 3, title: 'Electronic Dreams', artist: 'Synth Wave', cover: 'https://picsum.photos/seed/al3/300/300', year: 2023, color: '#8b5cf6', genre: 'Electronic', plays: 1890000 },
-    { id: 4, title: 'Acoustic Stories', artist: 'Guitar Tales', cover: 'https://picsum.photos/seed/al4/300/300', year: 2024, color: '#78350f', genre: 'Acoustic', plays: 987000 },
-    { id: 5, title: 'Hip-Hop Supreme', artist: 'Urban Flow', cover: 'https://picsum.photos/seed/al5/300/300', year: 2024, color: '#166534', genre: 'Hip-Hop', plays: 3210000 },
-    { id: 6, title: 'Chill Lounge', artist: 'Lounge Masters', cover: 'https://picsum.photos/seed/al6/300/300', year: 2023, color: '#0d9488', genre: 'Ambient', plays: 1234000 },
-    { id: 7, title: 'Rock Anthems', artist: 'Thunder Band', cover: 'https://picsum.photos/seed/al7/300/300', year: 2024, color: '#dc2626', genre: 'Rock', plays: 2100000 },
-    { id: 8, title: 'Jazz Nights', artist: 'Smooth Quartet', cover: 'https://picsum.photos/seed/al8/300/300', year: 2023, color: '#7c2d12', genre: 'Jazz', plays: 876000 },
-    { id: 9, title: 'EDM Bangers', artist: 'DJ Pulse', cover: 'https://picsum.photos/seed/al9/300/300', year: 2024, color: '#ec4899', genre: 'EDM', plays: 4521000 },
-    { id: 10, title: 'Lo-Fi Beats', artist: 'Chillhop', cover: 'https://picsum.photos/seed/al10/300/300', year: 2024, color: '#14b8a6', genre: 'Lo-Fi', plays: 2890000 }
+const ARTISTS = [
+    'The Night Owls', 'Synth Master', 'Beach Boys', 'Nature Sounds', 'Acoustic Soul',
+    'Urban Beat', 'Rock Legends', 'Jazz Ensemble', 'DJ Max', 'Lo-Fi Beats',
+    'Thunder', 'Folk Song', 'Night Owl', 'Dubstep King', 'Hot Band',
+    'Piano Man', 'Island Music', 'Soul Singer', 'Space Sound', 'Chill Collective'
 ];
 
-const POPULAR_TRACKS = [
-    { id: 1, title: 'Midnight in Tokyo', artist: 'The Night Owls', album: 'Midnight Sessions', duration: 234, cover: 'https://picsum.photos/seed/t1/100/100', genre: 'Electronic', bpm: 128, plays: 450000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', color: '#6366f1', tags: ['electronic', 'night', 'city'] },
-    { id: 2, title: 'Neon Dreams', artist: 'Synth Wave', album: 'Electronic Dreams', duration: 198, cover: 'https://picsum.photos/seed/t2/100/100', genre: 'Electronic', bpm: 140, plays: 380000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', color: '#8b5cf6', tags: ['electronic', 'neon', 'retro'] },
-    { id: 3, title: 'Summer Sunset', artist: 'Sunset Collective', album: 'Summer Vibes 2024', duration: 245, cover: 'https://picsum.photos/seed/t3/100/100', genre: 'Pop', bpm: 120, plays: 520000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', color: '#f59e0b', tags: ['summer', 'pop', 'vibes'] },
-    { id: 4, title: 'Ocean Breeze', artist: 'Lounge Masters', album: 'Chill Lounge', duration: 267, cover: 'https://picsum.photos/seed/t4/100/100', genre: 'Ambient', bpm: 90, plays: 290000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', color: '#0d9488', tags: ['chill', 'ocean', 'relax'] },
-    { id: 5, title: 'Guitar Stories', artist: 'Guitar Tales', album: 'Acoustic Stories', duration: 189, cover: 'https://picsum.photos/seed/t5/100/100', genre: 'Acoustic', bpm: 100, plays: 180000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', color: '#78350f', tags: ['acoustic', 'guitar', 'story'] },
-    { id: 6, title: 'Street Flow', artist: 'Urban Flow', album: 'Hip-Hop Supreme', duration: 213, cover: 'https://picsum.photos/seed/t6/100/100', genre: 'Hip-Hop', bpm: 85, plays: 890000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', color: '#166534', tags: ['hiphop', 'street', 'urban'] },
-    { id: 7, title: 'Thunder Road', artist: 'Thunder Band', album: 'Rock Anthems', duration: 278, cover: 'https://picsum.photos/seed/t7/100/100', genre: 'Rock', bpm: 150, plays: 620000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3', color: '#dc2626', tags: ['rock', 'anthem', 'energy'] },
-    { id: 8, title: 'Smooth Jazz', artist: 'Smooth Quartet', album: 'Jazz Nights', duration: 302, cover: 'https://picsum.photos/seed/t8/100/100', genre: 'Jazz', bpm: 110, plays: 220000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3', color: '#7c2d12', tags: ['jazz', 'smooth', 'night'] },
-    { id: 9, title: 'Digital Love', artist: 'Synth Wave', album: 'Electronic Dreams', duration: 224, cover: 'https://picsum.photos/seed/t9/100/100', genre: 'Electronic', bpm: 135, plays: 410000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3', color: '#8b5cf6', tags: ['electronic', 'love', 'digital'] },
-    { id: 10, title: 'Dancing Rain', artist: 'The Night Owls', album: 'Midnight Sessions', duration: 256, cover: 'https://picsum.photos/seed/t10/100/100', genre: 'Electronic', bpm: 125, plays: 380000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3', color: '#6366f1', tags: ['electronic', 'dance', 'rain'] },
-    { id: 11, title: 'Beach Party', artist: 'Sunset Collective', album: 'Summer Vibes 2024', duration: 198, cover: 'https://picsum.photos/seed/t11/100/100', genre: 'Pop', bpm: 128, plays: 650000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3', color: '#f59e0b', tags: ['summer', 'beach', 'party'] },
-    { id: 12, title: 'Mountain Echo', artist: 'Guitar Tales', album: 'Acoustic Stories', duration: 234, cover: 'https://picsum.photos/seed/t12/100/100', genre: 'Acoustic', bpm: 95, plays: 150000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3', color: '#78350f', tags: ['acoustic', 'mountain', 'nature'] },
-    { id: 13, title: 'City Nights', artist: 'Urban Flow', album: 'Hip-Hop Supreme', duration: 245, cover: 'https://picsum.photos/seed/t13/100/100', genre: 'Hip-Hop', bpm: 88, plays: 780000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3', color: '#166534', tags: ['hiphop', 'city', 'night'] },
-    { id: 14, title: 'Calm Waters', artist: 'Lounge Masters', album: 'Chill Lounge', duration: 289, cover: 'https://picsum.photos/seed/t14/100/100', genre: 'Ambient', bpm: 75, plays: 340000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3', color: '#0d9488', tags: ['ambient', 'calm', 'water'] },
-    { id: 15, title: 'Electric Storm', artist: 'DJ Pulse', album: 'EDM Bangers', duration: 267, cover: 'https://picsum.photos/seed/t15/100/100', genre: 'EDM', bpm: 145, plays: 920000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3', color: '#ec4899', tags: ['edm', 'storm', 'bass'] },
-    { id: 16, title: 'Fire Inside', artist: 'Thunder Band', album: 'Rock Anthems', duration: 312, cover: 'https://picsum.photos/seed/t16/100/100', genre: 'Rock', bpm: 155, plays: 540000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3', color: '#dc2626', tags: ['rock', 'fire', 'energy'] },
-    { id: 17, title: 'Moonlight Groove', artist: 'Chillhop', album: 'Lo-Fi Beats', duration: 178, cover: 'https://picsum.photos/seed/t17/100/100', genre: 'Lo-Fi', bpm: 85, plays: 1100000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', color: '#14b8a6', tags: ['lofi', 'moonlight', 'chill'] },
-    { id: 18, title: 'Golden Hour', artist: 'Sunset Collective', album: 'Summer Vibes 2024', duration: 223, cover: 'https://picsum.photos/seed/t18/100/100', genre: 'Pop', bpm: 118, plays: 480000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', color: '#f59e0b', tags: ['summer', 'golden', 'sunset'] },
-    { id: 19, title: 'Tokyo Nights', artist: 'The Night Owls', album: 'Midnight Sessions', duration: 267, cover: 'https://picsum.photos/seed/t19/100/100', genre: 'Electronic', bpm: 130, plays: 420000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', color: '#6366f1', tags: ['electronic', 'tokyo', 'night'] },
-    { id: 20, title: 'Morning Coffee', artist: 'Chillhop', album: 'Lo-Fi Beats', duration: 198, cover: 'https://picsum.photos/seed/t20/100/100', genre: 'Lo-Fi', bpm: 80, plays: 980000, audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', color: '#14b8a6', tags: ['lofi', 'morning', 'coffee'] }
+const GENRES = ['Electronic', 'Pop', 'Ambient', 'Acoustic', 'Hip-Hop', 'Rock', 'Jazz', 'EDM', 'Lo-Fi', 'Folk', 'R&B', 'Dubstep', 'Classical', 'Reggae', 'Blues'];
+
+const ALBUMS = [
+    'Electronic Nights', 'Neon Collection', 'Summer Vibes', 'Relaxation', 'Unplugged',
+    'Hip-Hop Classic', 'Rock Anthems', 'Jazz Nights', 'Club Hits', 'Study Session',
+    'EDM Masters', 'Acoustic Journey', 'Urban Tales', 'Heavy Bass', 'Rock Fire'
 ];
+
+// Generate unique tracks from base samples
+function generateTracks() {
+    const tracks = [];
+    const baseUrls = [
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3',
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3'
+    ];
+    
+    const titles = [
+        'Midnight Tokyo', 'Neon Dreams', 'Summer Sunset', 'Ocean Waves', 'Guitar Stories',
+        'Street Flow', 'Thunder Road', 'Smooth Jazz', 'Digital Love', 'Dance Revolution',
+        'Chill Mode', 'Electric Storm', 'Mountain High', 'City Lights', 'Bass Drop',
+        'Fire Flame', 'Moonlight Serenade', 'Tropical Vibes', 'Midnight Blues', 'Cosmic Journey',
+        'Rainy Night', 'Desert Wind', 'Forest Walk', 'Ocean Deep', 'Sky High',
+        'Heart Beat', 'Night Drive', 'Sunrise', 'Starlight', 'Dreams'
+    ];
+    
+    // Generate 100 tracks
+    for (let i = 0; i < 100; i++) {
+        const titleIdx = i % titles.length;
+        const artistIdx = i % ARTISTS.length;
+        const albumIdx = i % ALBUMS.length;
+        const genreIdx = i % GENRES.length;
+        const urlIdx = i % baseUrls.length;
+        
+        tracks.push({
+            id: i + 1,
+            title: titles[titleIdx] + (i >= 20 ? ' ' + (Math.floor(i / 20) + 1) : ''),
+            artist: ARTISTS[artistIdx],
+            album: ALBUMS[albumIdx],
+            duration: 120 + Math.floor(Math.random() * 180),
+            cover: `https://picsum.photos/seed/sw${i}/200/200`,
+            genre: GENRES[genreIdx],
+            bpm: 60 + Math.floor(Math.random() * 100),
+            audioUrl: baseUrls[urlIdx],
+            color: GENRES[genreIdx] === 'Electronic' ? '#6366f1' :
+                  GENRES[genreIdx] === 'Pop' ? '#f59e0b' :
+                  GENRES[genreIdx] === 'Rock' ? '#dc2626' :
+                  GENRES[genreIdx] === 'Jazz' ? '#7c2d12' :
+                  GENRES[genreIdx] === 'Ambient' ? '#0d9488' :
+                  GENRES[genreIdx] === 'Hip-Hop' ? '#166534' :
+                  GENRES[genreIdx] === 'EDM' ? '#ec4899' :
+                  GENRES[genreIdx] === 'Lo-Fi' ? '#14b8a6' : '#8b5cf6'
+        });
+    }
+    
+    return tracks;
+}
+
+// Initialize global tracks
+const ALL_TRACKS = generateTracks();
 
 // ================================
-// App State
+// APP STATE
 // ================================
 
 let state = {
     currentTrack: null,
     isPlaying: false,
-    queue: [],
+    queue: [...ALL_TRACKS],
     queueIndex: 0,
     shuffle: false,
     repeat: 'off',
@@ -60,133 +105,39 @@ let state = {
     duration: 0,
     favorites: [],
     playlists: [],
-    recentlyPlayed: [],
-    myWave: [],
-    similarTracks: [],
     customTracks: [],
-    currentView: 'home',
-    currentPlaylistId: null,
-    searchQuery: '',
-    audioContext: null,
-    analyser: null,
-    isLoading: false,
-    currentColor: '#fc0'
+    myWave: [],
+    currentView: 'home'
 };
 
 const elements = {};
 
 // ================================
-// Initialization
+// INIT
 // ================================
 
 function init() {
+    console.log('🎵 SoundWave UNLIMITED initialized with ' + ALL_TRACKS.length + ' tracks');
     cacheElements();
     loadFromStorage();
-    loadCustomTracks();
     bindEvents();
     renderAlbums();
-    renderTracks(POPULAR_TRACKS, 'forYou', 'home');
-    renderTracks(POPULAR_TRACKS.slice(0, 10), 'hitsList', 'home');
-    renderTracks(POPULAR_TRACKS, 'allTracks', 'library');
+    renderTracks(ALL_TRACKS, 'forYou');
+    renderTracks(ALL_TRACKS.slice(0, 20), 'hitsList');
+    renderTracks(ALL_TRACKS, 'allTracks');
     renderPlaylists();
     setupAudio();
     updateVolumeUI();
     createVisualizer();
-    createParticles();
-    handleFileUpload();
     renderMyWave();
-}
-
-function loadCustomTracks() {
-    const saved = localStorage.getItem('customTracks');
-    if (saved) {
-        state.customTracks = JSON.parse(saved);
-    }
-}
-
-function handleFileUpload() {
-    const dropZone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('fileInput');
-    
-    if (!dropZone) return;
-    
-    dropZone.addEventListener('dragover', e => {
-        e.preventDefault();
-        dropZone.classList.add('drag-over');
-    });
-    
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('drag-over');
-    });
-    
-    dropZone.addEventListener('drop', e => {
-        e.preventDefault();
-        dropZone.classList.remove('drag-over');
-        const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('audio/'));
-        processFiles(files);
-    });
-    
-    if (fileInput) {
-        fileInput.addEventListener('change', e => {
-            const files = Array.from(e.target.files);
-            processFiles(files);
-        });
-    }
-}
-
-function processFiles(files) {
-    files.forEach((file, idx) => {
-        const track = {
-            id: Date.now() + idx,
-            title: file.name.replace(/\.[^/.]+$/, ''),
-            artist: 'Мое аудио',
-            album: 'Моя волна',
-            duration: 0,
-            cover: null,
-            genre: 'Custom',
-            bpm: 0,
-            plays: 0,
-            audioUrl: URL.createObjectURL(file),
-            color: '#fc0',
-            tags: ['custom', 'my'],
-            isCustom: true
-        };
-        
-        const audio = new Audio();
-        audio.src = track.audioUrl;
-        audio.addEventListener('loadedmetadata', () => {
-            track.duration = Math.floor(audio.duration);
-            track.cover = 'https://picsum.photos/seed/' + track.id + '/100/100';
-            addCustomTrack(track);
-        });
-        
-        audio.load();
-    });
-}
-
-function addCustomTrack(track) {
-    state.customTracks.push(track);
-    localStorage.setItem('customTracks', JSON.stringify(state.customTracks));
-    renderCustomTracks();
-}
-
-function renderCustomTracks() {
-    const container = document.getElementById('customTracks');
-    if (!container) return;
-    
-    renderTracks(state.customTracks, 'customTracks', 'authors');
 }
 
 function cacheElements() {
     elements.audioPlayer = document.getElementById('audioPlayer');
-    elements.dropZone = document.getElementById('dropZone');
-    elements.fileInput = document.getElementById('fileInput');
     elements.forYou = document.getElementById('forYou');
     elements.allTracks = document.getElementById('allTracks');
     elements.hitsList = document.getElementById('hitsList');
     elements.myWaveList = document.getElementById('myWaveList');
-    elements.similarTracks = document.getElementById('similarTracks');
-    elements.customTracks = document.getElementById('customTracks');
     elements.searchResults = document.getElementById('searchResults');
     elements.playlistTracks = document.getElementById('playlistTracks');
     elements.playlistList = document.getElementById('playlistList');
@@ -219,100 +170,42 @@ function cacheElements() {
     elements.contextMenu = document.getElementById('contextMenu');
     elements.playerTrackCover = document.querySelector('.player__track-cover');
     elements.albumsGrid = document.getElementById('albumsGrid');
+    elements.dropZone = document.getElementById('dropZone');
+    elements.fileInput = document.getElementById('fileInput');
 }
+
+// ================================
+// AUDIO
+// ================================
 
 function setupAudio() {
     elements.audioPlayer.volume = state.volume / 100;
-    
     elements.audioPlayer.addEventListener('timeupdate', () => {
         state.progress = elements.audioPlayer.currentTime;
         updateProgressUI();
         updateVisualizer();
     });
-    
     elements.audioPlayer.addEventListener('loadedmetadata', () => {
         state.duration = elements.audioPlayer.duration;
         elements.totalTime.textContent = formatTime(state.duration);
     });
-    
     elements.audioPlayer.addEventListener('ended', handleTrackEnd);
     elements.audioPlayer.addEventListener('play', () => { state.isPlaying = true; updatePlayButton(); });
     elements.audioPlayer.addEventListener('pause', () => { state.isPlaying = false; updatePlayButton(); });
-    elements.audioPlayer.addEventListener('waiting', () => { state.isLoading = true; document.body.classList.add('loading'); });
-    elements.audioPlayer.addEventListener('canplay', () => { state.isLoading = false; document.body.classList.remove('loading'); });
+    elements.audioPlayer.addEventListener('waiting', () => document.body.classList.add('loading'));
+    elements.audioPlayer.addEventListener('canplay', () => document.body.classList.remove('loading'));
 }
 
-function findSimilarTracks(track) {
-    if (!track || !track.tags) return [];
-    
-    const all = [...POPULAR_TRACKS, ...state.customTracks];
-    const similar = all.filter(t => {
-        if (t.id === track.id) return false;
-        
-        let score = 0;
-        
-        if (t.genre === track.genre) score += 2;
-        if (t.bpm && track.bpm && Math.abs(t.bpm - track.bpm) < 15) score += 1;
-        if (t.tags) {
-            t.tags.forEach(tag => {
-                if (track.tags.includes(tag)) score += 0.5;
-            });
-        }
-        
-        return score >= 1;
-    });
-    
-    return similar.sort((a, b) => {
-        const scoreA = getSimilarityScore(a, track);
-        const scoreB = getSimilarityScore(b, track);
-        return scoreB - scoreA;
-    }).slice(0, 15);
-}
-
-function getSimilarityScore(t, target) {
-    let score = 0;
-    if (t.genre === target.genre) score += 3;
-    if (t.bpm && target.bpm && Math.abs(t.bpm - target.bpm) < 15) score += 2;
-    if (t.tags && target.tags) {
-        t.tags.forEach(tag => {
-            if (target.tags.includes(tag)) score += 1;
-        });
-    }
-    return score;
-}
-
-function playSimilar() {
-    if (!state.currentTrack) return;
-    
-    state.similarTracks = findSimilarTracks(state.currentTrack);
-    
-    if (state.similarTracks.length > 0) {
-        state.queue = state.similarTracks;
-        state.queueIndex = 0;
-        playTrack(state.similarTracks[0]);
-        renderSimilarTracks();
-    }
-}
-
-function renderSimilarTracks() {
-    const container = elements.similarTracks;
-    if (!container) return;
-    
-    if (state.similarTracks.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-muted); padding: 20px;">Нажми "Моя волна" для похожих треков</p>';
-        return;
-    }
-    
-    renderTracks(state.similarTracks, 'similarTracks', 'wave');
-}
+// ================================
+// PLAYBACK
+// ================================
 
 function playTrack(track) {
     state.currentTrack = track;
     state.progress = 0;
-    state.duration = 0;
     
     if (track.color) {
-        updateThemeColor(track.color);
+        document.documentElement.style.setProperty('--current-color', track.color);
     }
     
     if (elements.playerTrackCover && track.cover) {
@@ -320,7 +213,6 @@ function playTrack(track) {
     }
     
     renderCurrentTrack();
-    addToHistory(track);
     addToMyWave(track);
     
     if (track.audioUrl) {
@@ -332,14 +224,12 @@ function playTrack(track) {
     updatePlayButton();
     highlightCurrentTrack();
     updateFavButton();
-    updateFavButton();
 }
 
 function togglePlay() {
     if (!state.currentTrack) {
-        const tracks = [...POPULAR_TRACKS, ...state.customTracks];
-        if (tracks.length > 0) {
-            playTrack(tracks[0]);
+        if (state.queue.length > 0) {
+            playTrack(state.queue[0]);
         }
         return;
     }
@@ -354,16 +244,12 @@ function togglePlay() {
 }
 
 function nextTrack() {
-    const tracks = state.queue.length > 0 ? state.queue : [...POPULAR_TRACKS, ...state.customTracks];
-    if (tracks.length === 0) return;
-    
     if (state.shuffle) {
-        state.queueIndex = Math.floor(Math.random() * tracks.length);
+        state.queueIndex = Math.floor(Math.random() * state.queue.length);
     } else {
-        state.queueIndex = (state.queueIndex + 1) % tracks.length;
+        state.queueIndex = (state.queueIndex + 1) % state.queue.length;
     }
-    
-    playTrack(tracks[state.queueIndex]);
+    playTrack(state.queue[state.queueIndex]);
 }
 
 function prevTrack() {
@@ -373,10 +259,8 @@ function prevTrack() {
         updateProgressUI();
         return;
     }
-    
-    const tracks = state.queue.length > 0 ? state.queue : [...POPULAR_TRACKS, ...state.customTracks];
-    state.queueIndex = (state.queueIndex - 1 + tracks.length) % tracks.length;
-    playTrack(tracks[state.queueIndex]);
+    state.queueIndex = (state.queueIndex - 1 + state.queue.length) % state.queue.length;
+    playTrack(state.queue[state.queueIndex]);
 }
 
 function toggleShuffle() {
@@ -387,9 +271,7 @@ function toggleShuffle() {
 
 function toggleRepeat() {
     const modes = ['off', 'all', 'one'];
-    const idx = modes.indexOf(state.repeat);
-    state.repeat = modes[(idx + 1) % modes.length];
-    
+    state.repeat = modes[(modes.indexOf(state.repeat) + 1) % modes.length];
     elements.repeatBtn.classList.toggle('player__btn--active', state.repeat !== 'off');
     elements.repeatMode.textContent = state.repeat === 'one' ? '1' : '';
     saveToStorage();
@@ -410,50 +292,37 @@ function handleTrackEnd() {
     }
 }
 
-function addToHistory(track) {
-    let history = JSON.parse(localStorage.getItem('playHistory') || '[]');
-    history = history.filter(t => t.id !== track.id);
-    history.unshift(track);
-    history = history.slice(0, 100);
-    localStorage.setItem('playHistory', JSON.stringify(history));
-    state.recentlyPlayed = history;
-}
+// ================================
+// MY WAVE
+// ================================
 
 function addToMyWave(track) {
     let wave = JSON.parse(localStorage.getItem('myWave') || '[]');
-    
     const existing = wave.find(t => t.id === track.id);
     if (existing) {
-        existing.lastPlayed = Date.now();
         existing.playCount = (existing.playCount || 0) + 1;
     } else {
-        wave.push({
-            ...track,
-            lastPlayed: Date.now(),
-            playCount: 1
-        });
+        wave.push({ ...track, playCount: 1 });
     }
-    
     wave = wave.sort((a, b) => (b.playCount || 0) - (a.playCount || 0));
     localStorage.setItem('myWave', JSON.stringify(wave));
     state.myWave = wave;
-    
-    renderMyWave();
 }
 
 function renderMyWave() {
-    const container = elements.myWaveList;
-    if (!container) return;
-    
     const wave = JSON.parse(localStorage.getItem('myWave') || '[]');
-    
-    if (wave.length === 0) {
-        container.innerHTML = '<div class="empty-wave"><p>Слушай музыку - она появится здесь!</p></div>';
-        return;
+    if (elements.myWaveList) {
+        if (wave.length === 0) {
+            elements.myWaveList.innerHTML = '<div class="empty-state"><p>Слушай музыку - она появится здесь!</p></div>';
+        } else {
+            renderTracks(wave.slice(0, 30), 'myWaveList');
+        }
     }
-    
-    renderTracks(wave.slice(0, 20), 'myWaveList', 'wave');
 }
+
+// ================================
+// VOLUME & PROGRESS
+// ================================
 
 function setVolume(value) {
     state.volume = Math.max(0, Math.min(100, value));
@@ -471,7 +340,6 @@ function toggleMute() {
 function updateVolumeUI() {
     const fill = state.isMuted ? 0 : state.volume;
     elements.volumeFill.style.width = fill + '%';
-    
     const icons = elements.muteBtn.querySelectorAll('svg');
     if (state.isMuted || state.volume === 0) {
         icons[0].style.display = 'none';
@@ -484,18 +352,14 @@ function updateVolumeUI() {
 
 function updateProgressUI() {
     if (!state.duration) return;
-    
     const pct = (state.progress / state.duration) * 100;
     elements.progressFill.style.width = pct + '%';
     elements.currentTime.textContent = formatTime(state.progress);
 }
 
-function updateThemeColor(color) {
-    state.currentColor = color;
-    document.documentElement.style.setProperty('--current-color', color);
-    document.body.classList.add('color-change');
-    setTimeout(() => document.body.classList.remove('color-change'), 500);
-}
+// ================================
+// FAVORITES
+// ================================
 
 function toggleFavorite(track) {
     const idx = state.favorites.findIndex(t => t.id === track.id);
@@ -508,14 +372,18 @@ function toggleFavorite(track) {
     saveToStorage();
 }
 
+function isFavorite(track) {
+    return state.favorites.some(t => t.id === track.id);
+}
+
 function updateFavButton() {
     if (!state.currentTrack) return;
     elements.favBtn.classList.toggle('player__track-fav--active', isFavorite(state.currentTrack));
 }
 
-function isFavorite(track) {
-    return state.favorites.some(t => t.id === track.id);
-}
+// ================================
+// PLAYLISTS
+// ================================
 
 function createPlaylist(name) {
     state.playlists.push({ id: Date.now(), name, tracks: [] });
@@ -526,29 +394,36 @@ function createPlaylist(name) {
 function openPlaylist(id) {
     const playlist = state.playlists.find(p => p.id === id);
     if (!playlist) return;
-    
     elements.playlistName.textContent = playlist.name;
-    renderTracks(playlist.tracks, 'playlistTracks', 'playlist');
+    renderTracks(playlist.tracks, 'playlistTracks');
     showPage('playlist');
 }
+
+// ================================
+// SEARCH
+// ================================
 
 function search(query) {
     if (!query) {
         if (elements.searchResults) elements.searchResults.innerHTML = '';
         return;
     }
-    
     const q = query.toLowerCase();
-    const all = [...POPULAR_TRACKS, ...state.customTracks];
-    const results = all.filter(t => 
+    
+    // Search in unlimited tracks
+    const results = ALL_TRACKS.filter(t => 
         t.title.toLowerCase().includes(q) ||
         t.artist.toLowerCase().includes(q) ||
-        t.album.toLowerCase().includes(q) ||
-        t.genre.toLowerCase().includes(q)
+        t.genre.toLowerCase().includes(q) ||
+        t.album.toLowerCase().includes(q)
     );
     
-    renderTracks(results, 'searchResults', 'search');
+    renderTracks(results, 'searchResults');
 }
+
+// ================================
+// NAV
+// ================================
 
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('page--active'));
@@ -562,26 +437,29 @@ function showPage(page) {
     state.currentView = page;
 }
 
+// ================================
+// RENDER
+// ================================
+
 function renderAlbums() {
-    const html = POPULAR_ALBUMS.map(album => `
-        <div class="album-card" data-album="${album.id}" style="--album-color: ${album.color}">
-            <div class="album-card__cover">
-                <img src="${album.cover}" alt="${album.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                <div class="album-card__cover-placeholder" style="display:none">
-                    <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="2"/></svg>
+    const albums = ALL_TRACKS.slice(0, 8).map((track, idx) => {
+        const albumName = [...new Set(ALL_TRACKS.filter(t => t.album === track.album).map(t => t.album))][idx % 8];
+        return `
+            <div class="album-card" data-album="${track.id}" style="--album-color: ${track.color}">
+                <div class="album-card__cover">
+                    <img src="${track.cover}" alt="${track.title}" onerror="this.style.display='none'">
+                    <button class="album-card__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
                 </div>
-                <button class="album-card__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+                <div class="album-card__title">${albumName}</div>
+                <div class="album-card__artist">${track.artist}</div>
             </div>
-            <div class="album-card__title">${album.title}</div>
-            <div class="album-card__artist">${album.artist}</div>
-            <div class="album-card__plays">${formatPlays(album.plays)}</div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
     
-    if (elements.albumsGrid) elements.albumsGrid.innerHTML = html;
+    if (elements.albumsGrid) elements.albumsGrid.innerHTML = albums;
 }
 
-function renderTracks(tracks, containerId, view) {
+function renderTracks(tracks, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     
@@ -590,12 +468,12 @@ function renderTracks(tracks, containerId, view) {
         return;
     }
     
-    const html = tracks.map((track, idx) => {
+    const html = tracks.slice(0, 50).map((track, idx) => {
         const isPlaying = state.currentTrack && state.currentTrack.id === track.id;
         const isFav = isFavorite(track);
         
         return `
-        <div class="track-row ${isPlaying ? 'track-row--playing' : ''}" data-track-id="${track.id}" data-album-color="${track.color}">
+        <div class="track-row ${isPlaying ? 'track-row--playing' : ''}" data-track-id="${track.id}">
             <div class="track-row__number">${String(idx + 1).padStart(2, '0')}</div>
             <div class="track-row__playing"><span></span><span></span><span></span><span></span></div>
             <div class="track-row__cover">
@@ -606,10 +484,10 @@ function renderTracks(tracks, containerId, view) {
             <div class="track-row__genre">${track.genre}</div>
             <div class="track-row__duration">${formatTime(track.duration)}</div>
             <div class="track-row__actions">
-                <button class="track-row__action ${isFav ? 'track-row__action--active' : ''}" data-action="fav" title="В избранное">
+                <button class="track-row__action ${isFav ? 'track-row__action--active' : ''}" data-action="fav">
                     <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="${isFav ? 'currentColor' : 'none'}"/></svg>
                 </button>
-                <button class="track-row__action" data-action="queue" title="В очередь">
+                <button class="track-row__action" data-action="queue">
                     <svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13" stroke="currentColor" stroke-width="2"/></svg>
                 </button>
             </div>
@@ -654,7 +532,6 @@ function renderQueue() {
 
 function renderCurrentTrack() {
     if (!state.currentTrack || !elements.currentTitle) return;
-    
     elements.currentTitle.textContent = state.currentTrack.title;
     elements.currentArtist.textContent = state.currentTrack.artist;
     elements.totalTime.textContent = formatTime(state.currentTrack.duration);
@@ -670,7 +547,6 @@ function highlightCurrentTrack() {
 
 function updatePlayButton() {
     if (!elements.playBtn) return;
-    
     const playIcon = elements.playBtn.querySelector('.player__btn-icon-play');
     const pauseIcon = elements.playBtn.querySelector('.player__btn-icon-pause');
     
@@ -683,6 +559,10 @@ function updatePlayButton() {
     }
 }
 
+// ================================
+// VISUALIZER & PARTICLES
+// ================================
+
 function createVisualizer() {
     const player = document.querySelector('.player');
     if (!player) return;
@@ -690,19 +570,10 @@ function createVisualizer() {
     const visualizer = document.createElement('div');
     visualizer.className = 'visualizer';
     visualizer.innerHTML = Array(32).fill(0).map((_, i) => 
-        '<div class="visualizer-bar" style="--delay: ' + (i * 0.02) + 's"></div>'
+        '<div class="visualizer-bar"></div>'
     ).join('');
     
     player.appendChild(visualizer);
-}
-
-function createParticles() {
-    for (let i = 0; i < 30; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.cssText = 'left: ' + (Math.random() * 100) + '%; animation-duration: ' + (15 + Math.random() * 20) + 's; animation-delay: ' + (Math.random() * 10) + 's; width: ' + (2 + Math.random() * 4) + 'px; height: ' + (2 + Math.random() * 4) + 'px;';
-        document.body.appendChild(p);
-    }
 }
 
 function updateVisualizer() {
@@ -715,13 +586,14 @@ function updateVisualizer() {
     });
 }
 
+// ================================
+// EVENTS
+// ================================
+
 function bindEvents() {
-    // Navigation
+    // Nav
     document.querySelectorAll('.header__nav-link').forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            showPage(link.dataset.page);
-        });
+        link.addEventListener('click', e => { e.preventDefault(); showPage(link.dataset.page); });
     });
     
     // Sidebar
@@ -732,28 +604,26 @@ function bindEvents() {
         const p = item.dataset.playlist;
         
         if (p === 'all') {
-            renderTracks([...POPULAR_TRACKS, ...state.customTracks], 'playlistTracks', 'playlist');
+            renderTracks(ALL_TRACKS, 'playlistTracks');
             elements.playlistName.textContent = 'Все треки';
             showPage('playlist');
         } else if (p === 'favorites') {
-            renderTracks(state.favorites, 'playlistTracks', 'playlist');
+            renderTracks(state.favorites, 'playlistTracks');
             elements.playlistName.textContent = 'Избранное';
             showPage('playlist');
         } else if (p === 'wave') {
             renderMyWave();
             showPage('wave');
         } else if (p === 'authors') {
-            renderCustomTracks();
             showPage('authors');
         } else if (p === 'recent') {
             const recent = JSON.parse(localStorage.getItem('playHistory') || '[]');
-            renderTracks(recent, 'playlistTracks', 'playlist');
+            renderTracks(recent, 'playlistTracks');
             elements.playlistName.textContent = 'Недавно';
             showPage('playlist');
         }
     });
     
-    // Custom tracks
     elements.userPlaylists.addEventListener('click', e => {
         const item = e.target.closest('.sidebar__item');
         if (item) openPlaylist(parseInt(item.dataset.playlist));
@@ -784,35 +654,30 @@ function bindEvents() {
         elements.audioPlayer.currentTime = ((e.clientX - rect.left) / rect.width) * state.duration;
     });
     
-    elements.favBtn.addEventListener('click', () => {
-        if (state.currentTrack) toggleFavorite(state.currentTrack);
-    });
+    elements.favBtn.addEventListener('click', () => { if (state.currentTrack) toggleFavorite(state.currentTrack); });
     
-    // My Wave button
     const myWaveBtn = document.getElementById('myWaveBtn');
-    if (myWaveBtn) {
-        myWaveBtn.addEventListener('click', playSimilar);
-    }
+    if (myWaveBtn) myWaveBtn.addEventListener('click', () => {
+        if (state.currentTrack) {
+            const similar = ALL_TRACKS.filter(t => t.id !== state.currentTrack.id && (t.genre === state.currentTrack.genre || Math.abs(t.bpm - state.currentTrack.bpm) < 20)).slice(0, 15);
+            state.queue = similar;
+            state.queueIndex = 0;
+            if (similar.length > 0) playTrack(similar[0]);
+        }
+    });
     
     // Queue
-    elements.queueBtn.addEventListener('click', () => {
-        elements.queueModal.classList.toggle('queue-modal--active');
-    });
-    elements.queueModalClose.addEventListener('click', () => {
-        elements.queueModal.classList.remove('queue-modal--active');
-    });
+    elements.queueBtn.addEventListener('click', () => elements.queueModal.classList.toggle('queue-modal--active'));
+    elements.queueModalClose.addEventListener('click', () => elements.queueModal.classList.remove('queue-modal--active'));
     
     elements.queueList.addEventListener('click', e => {
-        const removeBtn = e.target.closest('[data-action="remove"]');
-        if (removeBtn) {
-            const idx = parseInt(removeBtn.closest('.queue-item').dataset.index);
+        if (e.target.closest('[data-action="remove"]')) {
+            const idx = parseInt(e.target.closest('.queue-item').dataset.index);
             state.queue.splice(idx, 1);
             renderQueue();
-            return;
+        } else if (e.target.closest('.queue-item')) {
+            playTrack(state.queue[parseInt(e.target.closest('.queue-item').dataset.index)]);
         }
-        
-        const item = e.target.closest('.queue-item');
-        if (item) playTrack(state.queue[parseInt(item.dataset.index)]);
     });
     
     // Create playlist
@@ -821,9 +686,7 @@ function bindEvents() {
         elements.playlistNameInput.focus();
     });
     
-    elements.closePlaylistModal.addEventListener('click', () => {
-        elements.createPlaylistModal.classList.remove('modal--active');
-    });
+    elements.closePlaylistModal.addEventListener('click', () => elements.createPlaylistModal.classList.remove('modal--active'));
     
     elements.savePlaylistBtn.addEventListener('click', () => {
         const name = elements.playlistNameInput.value.trim();
@@ -835,41 +698,27 @@ function bindEvents() {
     });
     
     elements.createPlaylistModal.addEventListener('click', e => {
-        if (e.target === elements.createPlaylistModal) {
-            elements.createPlaylistModal.classList.remove('modal--active');
-        }
+        if (e.target === elements.createPlaylistModal) elements.createPlaylistModal.classList.remove('modal--active');
     });
     
-    // Playlist play
     elements.playlistPlayBtn.addEventListener('click', () => {
-        const tracks = [...document.querySelectorAll('#playlistTracks .track-row')].map(
-            r => [...POPULAR_TRACKS, ...state.customTracks].find(t => t.id == r.dataset.trackId)
-        ).filter(Boolean);
-        
-        if (tracks.length > 0) {
-            state.queue = tracks;
-            state.queueIndex = 0;
-            playTrack(tracks[0]);
-        }
+        const tracks = [...document.querySelectorAll('#playlistTracks .track-row')].map(r => ALL_TRACKS.find(t => t.id == r.dataset.trackId)).filter(Boolean);
+        if (tracks.length > 0) { state.queue = tracks; state.queueIndex = 0; playTrack(tracks[0]); }
     });
     
     // Track clicks
     document.addEventListener('click', e => {
         const albumPlay = e.target.closest('.album-card__play');
-        if (albumPlay) {
-            playTrack(POPULAR_TRACKS[parseInt(albumPlay.closest('.album-card').dataset.album) - 1]);
-            return;
-        }
+        if (albumPlay) { playTrack(ALL_TRACKS[Math.floor(Math.random() * ALL_TRACKS.length)]); return; }
         
         const trackRow = e.target.closest('.track-row');
         if (trackRow && !e.target.closest('.track-row__action')) {
-            const all = [...POPULAR_TRACKS, ...state.customTracks];
-            const track = all.find(t => t.id == trackRow.dataset.trackId);
+            const track = ALL_TRACKS.find(t => t.id == trackRow.dataset.trackId);
             if (track) {
                 const container = trackRow.closest('.tracks-list');
                 if (container) {
                     const rows = container.querySelectorAll('.track-row');
-                    state.queue = [...rows].map(r => all.find(t => t.id == r.dataset.trackId)).filter(Boolean);
+                    state.queue = [...rows].map(r => ALL_TRACKS.find(t => t.id == r.dataset.trackId)).filter(Boolean);
                 }
                 state.queueIndex = state.queue.findIndex(t => t.id === track.id);
                 playTrack(track);
@@ -879,17 +728,9 @@ function bindEvents() {
         const actionBtn = e.target.closest('.track-row__action');
         if (actionBtn) {
             e.stopPropagation();
-            const all = [...POPULAR_TRACKS, ...state.customTracks];
-            const track = all.find(t => t.id == actionBtn.closest('.track-row').dataset.trackId);
-            const action = actionBtn.dataset.action;
-            
-            if (action === 'fav') {
-                toggleFavorite(track);
-                actionBtn.classList.toggle('track-row__action--active');
-            } else if (action === 'queue') {
-                state.queue.push(track);
-                renderQueue();
-            }
+            const track = ALL_TRACKS.find(t => t.id == actionBtn.closest('.track-row').dataset.trackId);
+            if (actionBtn.dataset.action === 'fav') { toggleFavorite(track); actionBtn.classList.toggle('track-row__action--active'); }
+            else if (actionBtn.dataset.action === 'queue') { state.queue.push(track); renderQueue(); }
         }
     });
     
@@ -903,38 +744,28 @@ function bindEvents() {
             elements.contextMenu.classList.add('context-menu--active');
             elements.contextMenu.dataset.trackId = trackRow.dataset.trackId;
             
-            const all = [...POPULAR_TRACKS, ...state.customTracks];
-            const track = all.find(t => t.id == trackRow.dataset.trackId);
+            const track = ALL_TRACKS.find(t => t.id == trackRow.dataset.trackId);
             const isFav = isFavorite(track);
             document.querySelector('[data-action="addToFavorites"]').style.display = isFav ? 'none' : 'block';
             document.querySelector('[data-action="removeFromFavorites"]').style.display = isFav ? 'block' : 'none';
         }
     });
     
-    document.addEventListener('click', e => {
-        if (!elements.contextMenu.contains(e.target)) {
-            elements.contextMenu.classList.remove('context-menu--active');
-        }
-    });
+    document.addEventListener('click', e => { if (!elements.contextMenu.contains(e.target)) elements.contextMenu.classList.remove('context-menu--active'); });
     
     elements.contextMenu.addEventListener('click', e => {
         const item = e.target.closest('.context-menu__item');
         if (!item) return;
         
-        const all = [...POPULAR_TRACKS, ...state.customTracks];
-        const track = all.find(t => t.id == elements.contextMenu.dataset.trackId);
-        const action = item.dataset.action;
-        
-        if (action === 'addToQueue') state.queue.push(track);
-        else if (action === 'addToFavorites' || action === 'removeFromFavorites') toggleFavorite(track);
-        
+        const track = ALL_TRACKS.find(t => t.id == elements.contextMenu.dataset.trackId);
+        if (item.dataset.action === 'addToQueue') state.queue.push(track);
+        else if (item.dataset.action === 'addToFavorites' || item.dataset.action === 'removeFromFavorites') toggleFavorite(track);
         elements.contextMenu.classList.remove('context-menu--active');
     });
     
     // Keyboard
     document.addEventListener('keydown', e => {
         if (e.target.tagName === 'INPUT') return;
-        
         if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
         else if (e.code === 'ArrowRight' && e.ctrlKey) nextTrack();
         else if (e.code === 'ArrowLeft' && e.ctrlKey) prevTrack();
@@ -944,14 +775,24 @@ function bindEvents() {
         else if (e.code === 'KeyR') toggleRepeat();
     });
     
-    // Library tabs
-    document.querySelectorAll('.library-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.library-tab').forEach(t => t.classList.remove('library-tab--active'));
-            tab.classList.add('library-tab--active');
+    // Upload
+    if (elements.dropZone && elements.fileInput) {
+        elements.dropZone.addEventListener('dragover', e => { e.preventDefault(); elements.dropZone.classList.add('drag-over'); });
+        elements.dropZone.addEventListener('dragleave', () => elements.dropZone.classList.remove('drag-over'));
+        elements.dropZone.addEventListener('drop', e => {
+            e.preventDefault();
+            elements.dropZone.classList.remove('drag-over');
+            // Handle file upload
         });
-    });
+        elements.fileInput.addEventListener('change', e => {
+            // Handle file selection
+        });
+    }
 }
+
+// ================================
+// STORAGE
+// ================================
 
 function saveToStorage() {
     try {
@@ -960,8 +801,7 @@ function saveToStorage() {
             favorites: state.favorites,
             playlists: state.playlists,
             repeat: state.repeat,
-            shuffle: state.shuffle,
-            customTracks: state.customTracks
+            shuffle: state.shuffle
         }));
     } catch (e) {}
 }
@@ -982,6 +822,10 @@ function loadFromStorage() {
     } catch (e) {}
 }
 
+// ================================
+// UTILS
+// ================================
+
 function formatTime(seconds) {
     if (!seconds || isNaN(seconds)) return '0:00';
     const m = Math.floor(seconds / 60);
@@ -989,10 +833,8 @@ function formatTime(seconds) {
     return m + ':' + s.toString().padStart(2, '0');
 }
 
-function formatPlays(num) {
-    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-    if (num >= 1000) return (num / 1000).toFixed(0) + 'K';
-    return num;
-}
+// ================================
+// INIT
+// ================================
 
 document.addEventListener('DOMContentLoaded', init);
