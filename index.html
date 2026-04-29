@@ -6,7 +6,7 @@
     <title>SoundWave Music</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
         <header class="header">
             <div class="header__logo">
                 <svg class="header__logo-icon" viewBox="0 0 32 32" fill="none">
-                    <path d="M4 16h4l3-6 4 12 4-8 3 4h4" stroke="#fc0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M4 16h4l3-6 4 12 4-8 3 4h4" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <span class="header__logo-text">SoundWave</span>
             </div>
@@ -25,18 +25,15 @@
                 <a href="#" class="header__nav-link" data-page="library">Моя музыка</a>
             </nav>
             <div class="header__search">
-                <svg class="header__search-icon" viewBox="0 0 24 24" fill="none">
+                <svg class="header__search-icon" viewBox="0 0 24 24">
                     <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2"/>
                     <path d="M16 16l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
-                <input type="text" class="header__search-input" placeholder="Поиск...">
+                <input type="text" class="header__search-input" placeholder="Поиск треков, исполнителей, жанров...">
             </div>
             <div class="header__user">
                 <button class="header__user-btn">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
-                        <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="2"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="2"/></svg>
                 </button>
             </div>
         </header>
@@ -44,98 +41,128 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar__section">
-                <h3 class="sidebar__title">Плейлисты</h3>
-                <button class="sidebar__create-btn">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    Создать плейлист
-                </button>
+                <h3 class="sidebar__title">Библиотека</h3>
             </div>
             <div class="sidebar__list" id="playlistList">
-                <div class="sidebar__item sidebar__item--active" data-playlist="all">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="2"/>
-                        <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="2"/>
-                    </svg>
+                <div class="sidebar__item" data-playlist="all">
+                    <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="2"/></svg>
                     <span>Все треки</span>
                 </div>
                 <div class="sidebar__item" data-playlist="favorites">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2"/></svg>
                     <span>Избранное</span>
                 </div>
+                <div class="sidebar__item" data-playlist="wave" id="myWaveItem">
+                    <svg viewBox="0 0 24 24"><path d="M2 12h2l3-6 4 12 4-8 3 4h4l2-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Моя волна</span>
+                </div>
+                <div class="sidebar__item" data-playlist="authors">
+                    <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 013 3v1a3 3 0 01-6 0V5a3 3 0 013-3zm0 12a3 3 0 013 3v1a3 3 0 01-6 0v-1a3 3 0 013-3z" stroke="currentColor" stroke-width="2"/><path d="M20 11v2a4 4 0 01-4 4h-4a4 4 0 01-4-4v-2" stroke="currentColor" stroke-width="2"/></svg>
+                    <span>Мое аудио</span>
+                </div>
                 <div class="sidebar__item" data-playlist="recent">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     <span>Недавно</span>
                 </div>
             </div>
-            <div class="sidebar__playlists" id="userPlaylists">
-                <!-- User playlists will be added here -->
+            <div class="sidebar__section" style="margin-top: 24px;">
+                <button class="sidebar__create-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Новый плейлист
+                </button>
             </div>
+            <div class="sidebar__playlists" id="userPlaylists"></div>
         </aside>
 
         <!-- Main Content -->
-        <main class="main" id="mainContent">
+        <main class="main">
             <!-- Home Page -->
             <section class="page page--active" id="pageHome">
                 <div class="hero">
                     <div class="hero__content">
-                        <h1 class="hero__title">Музыка на любой вкус</h1>
-                        <p class="hero__subtitle">Откройте для себя миллионы треков и плейлистов</p>
+                        <h1 class="hero__title">Музыка без границ</h1>
+                        <p class="hero__subtitle">Слушай любимые треки, открывай новое</p>
                     </div>
-                    <div class="hero__wave"></div>
+                    <div class="hero__visual">
+                        <div class="hero__bar"></div>
+                        <div class="hero__bar"></div>
+                        <div class="hero__bar"></div>
+                        <div class="hero__bar"></div>
+                        <div class="hero__bar"></div>
+                    </div>
                 </div>
 
                 <div class="section">
                     <h2 class="section__title">Популярные альбомы</h2>
-                    <div class="albums-grid" id="albumsGrid">
-                        <!-- Albums will be rendered here -->
-                    </div>
+                    <div class="albums-grid" id="albumsGrid"></div>
                 </div>
 
                 <div class="section">
-                    <h2 class="section__title">Рекомендации для вас</h2>
-                    <div class="tracks-list" id="recommendationsList">
-                        <!-- Tracks will be rendered here -->
-                    </div>
+                    <h2 class="section__title">Для тебя</h2>
+                    <div class="tracks-list" id="forYou"></div>
                 </div>
 
                 <div class="section">
-                    <h2 class="section__title">Хиты недели</h2>
-                    <div class="tracks-list" id="hitsList">
-                        <!-- Tracks will be rendered here -->
-                    </div>
+                    <h2 class="section__title">Хиты</h2>
+                    <div class="tracks-list" id="hitsList"></div>
                 </div>
             </section>
 
             <!-- Search Page -->
             <section class="page" id="pageSearch">
-                <div class="search-results">
+                <div class="search-header">
                     <h2 class="section__title">Результаты поиска</h2>
-                    <div class="tracks-list" id="searchResults">
-                        <!-- Search results will appear here -->
-                    </div>
                 </div>
+                <div class="search-results" id="searchResults"></div>
             </section>
 
             <!-- Library Page -->
             <section class="page" id="pageLibrary">
                 <div class="section">
-                    <h2 class="section__title">Моя коллекция</h2>
+                    <h2 class="section__title">Моя музыка</h2>
                     <div class="library-tabs">
-                        <button class="library-tab library-tab--active" data-tab="tracks">Треки</button>
-                        <button class="library-tab" data-tab="albums">Альбомы</button>
-                        <button class="library-tab" data-tab="artists">Исполнители</button>
+                        <button class="library-tab library-tab--active" data-tab="tracks">Все треки</button>
+                        <button class="library-tab" data-tab="favorites">Избранное</button>
+                        <button class="library-tab" data-tab="artists">Жанры</button>
                     </div>
-                    <div class="tracks-list" id="libraryTracks">
-                        <!-- Library tracks will be rendered here -->
+                    <div class="tracks-list" id="allTracks"></div>
+                </div>
+            </section>
+
+            <!-- Wave Page -->
+            <section class="page" id="pageWave">
+                <div class="section">
+                    <div class="wave-header">
+                        <div class="wave-header__info">
+                            <h2 class="section__title">Моя волна</h2>
+                            <p class="wave-header__desc">Твой персональный плейлист на основе того, что ты слушаешь</p>
+                        </div>
+                        <button class="wave-play-btn" id="myWaveBtn">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            Моя волна
+                        </button>
                     </div>
+                    <div class="tracks-list" id="myWaveList"></div>
+                </div>
+            </section>
+
+            <!-- Authors Page (Custom Upload) -->
+            <section class="page" id="pageAuthors">
+                <div class="section">
+                    <h2 class="section__title">Мое аудио</h2>
+                    <div class="upload-zone" id="dropZone">
+                        <div class="upload-zone__content">
+                            <svg viewBox="0 0 24 24" width="48" height="48">
+                                <path d="M12 2v12M5 9l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20 16v-4a4 4 0 00-4-4h-4a4 4 0 00-4 4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <p>Перетащи аудиофайлы сюда</p>
+                            <span>или</span>
+                            <button class="upload-btn">Выбрать файлы</button>
+                            <input type="file" id="fileInput" accept="audio/*" multiple hidden>
+                        </div>
+                    </div>
+                    <div class="tracks-list" id="customTracks"></div>
                 </div>
             </section>
 
@@ -143,124 +170,77 @@
             <section class="page" id="pagePlaylist">
                 <div class="playlist-header">
                     <div class="playlist-header__cover" id="playlistCover">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M9 18V5l12-2v13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="6" cy="18" r="3" stroke="white" stroke-width="2"/>
-                            <circle cx="18" cy="16" r="3" stroke="white" stroke-width="2"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" stroke="white" stroke-width="2"/><circle cx="6" cy="18" r="3" stroke="white" stroke-width="2"/><circle cx="18" cy="16" r="3" stroke="white" stroke-width="2"/></svg>
                     </div>
                     <div class="playlist-header__info">
                         <span class="playlist-header__type">Плейлист</span>
-                        <h1 class="playlist-header__name" id="playlistName">Название плейлиста</h1>
-                        <p class="playlist-header__meta"><span id="playlistTrackCount">0</span> треков</p>
+                        <h1 class="playlist-header__name" id="playlistName">Название</h1>
                     </div>
                 </div>
                 <div class="playlist-actions">
                     <button class="playlist-play-btn" id="playlistPlayBtn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         Воспроизвести
                     </button>
                 </div>
-                <div class="tracks-list" id="playlistTracks">
-                    <!-- Playlist tracks will be rendered here -->
-                </div>
+                <div class="tracks-list" id="playlistTracks"></div>
             </section>
         </main>
 
         <!-- Player Bar -->
         <div class="player">
             <div class="player__track">
-                <img class="player__track-cover" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23242424' width='100' height='100'/%3E%3Ctext x='50' y='55' font-size='40' text-anchor='middle' fill='%23999' font-family='sans-serif'%3E♪%3C/text%3E%3C/svg%3E" alt="Album art">
+                <img class="player__track-cover" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23242424' width='56' height='56'/%3E%3C/svg%3E" alt="Cover">
                 <div class="player__track-info">
-                    <span class="player__track-title" id="currentTitle">Выберите трек</span>
+                    <span class="player__track-title" id="currentTitle">Выбери трек</span>
                     <span class="player__track-artist" id="currentArtist">—</span>
                 </div>
                 <button class="player__track-fav" id="favBtn">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2"/></svg>
                 </button>
             </div>
 
             <div class="player__controls">
                 <div class="player__buttons">
-                    <button class="player__btn player__btn--shuffle" id="shuffleBtn" title="Перемешать">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M16 3h5v5M4 20l5-5M3 16h5v5M21 4l-5 5M14 9l-3 3M11 9l3 3M14 15l-3 3M11 15l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
+                    <button class="player__btn" id="shuffleBtn" title="Перемешать (S)">
+                        <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20l5-5M3 16h5v5M21 4l-5 5M14 9l-3 3M11 9l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     </button>
-                    <button class="player__btn player__btn--prev" id="prevBtn" title="Предыдущий">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 20L9 12l10-8v16zM5 19V5" fill="none" stroke="currentColor" stroke-width="2"/>
-                        </svg>
+                    <button class="player__btn" id="prevBtn" title="Предыдущий">
+                        <svg viewBox="0 0 24 24"><path d="M19 20L9 12l10-8v16zM5 19V5" stroke="currentColor" stroke-width="2"/></svg>
                     </button>
-                    <button class="player__btn player__btn--play" id="playBtn" title="Воспроизвести">
-                        <svg class="player__btn-icon-play" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                        <svg class="player__btn-icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
-                            <path d="M6 4h4v16H4zM14 4h4v16h-4z"/>
-                        </svg>
+                    <button class="player__btn player__btn--play" id="playBtn" title="Воспроизвести (Space)">
+                        <svg class="player__btn-icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="player__btn-icon-pause" viewBox="0 0 24 24"><path d="M6 4h4v16H4zM14 4h4v16h-4z"/></svg>
                     </button>
-                    <button class="player__btn player__btn--next" id="nextBtn" title="Следующий">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M5 4l10 8-10 8V4zM19 5v14" fill="none" stroke="currentColor" stroke-width="2"/>
-                        </svg>
+                    <button class="player__btn" id="nextBtn" title="Следующий">
+                        <svg viewBox="0 0 24 24"><path d="M5 4l10 8-10 8V4zM19 5v14" stroke="currentColor" stroke-width="2"/></svg>
                     </button>
-                    <button class="player__btn player__btn--repeat" id="repeatBtn" title="Повтор">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M17 1l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M3 11V9a4 4 0 014-4h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M7 23l-4-4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M21 13v2a4 4 0 01-4 4H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <span class="player__btn-repeat-icon" id="repeatMode" title="Повтор">1</span>
+                    <button class="player__btn" id="repeatBtn" title="Повтор (R)">
+                        <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        <span class="player__btn-repeat-mode" id="repeatMode"></span>
                     </button>
                 </div>
                 <div class="player__progress">
                     <span class="player__time" id="currentTime">0:00</span>
                     <div class="player__progress-bar" id="progressBar">
                         <div class="player__progress-fill" id="progressFill"></div>
-                        <div class="player__progress-handle" id="progressHandle"></div>
                     </div>
                     <span class="player__time" id="totalTime">0:00</span>
                 </div>
             </div>
 
             <div class="player__extra">
-                <button class="player__btn player__btn--queue" id="queueBtn" title="Очередь">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <button class="player__btn player__btn--lyrics" id="lyricsBtn" title="Тексты">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="2"/>
-                        <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="2"/>
-                    </svg>
+                <button class="player__btn" id="queueBtn" title="Очередь">
+                    <svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
                 <div class="player__volume">
-                    <button class="player__btn player__btn--mute" id="muteBtn" title="Без звука">
-                        <svg class="player__volume-icon" viewBox="0 0 24 24" fill="none">
-                            <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M15.54 8.46a5 5 0 010 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <svg class="player__volume-icon-muted" viewBox="0 0 24 24" fill="none" style="display: none;">
-                            <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
+                    <button class="player__btn" id="muteBtn">
+                        <svg class="player__volume-icon" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        <svg class="player__volume-icon-muted" viewBox="0 0 24 24" style="display:none;"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     </button>
                     <div class="player__volume-bar" id="volumeBar">
                         <div class="player__volume-fill" id="volumeFill"></div>
-                        <div class="player__volume-handle" id="volumeHandle"></div>
                     </div>
-                </div>
-                <div class="player__quality">
-                    <span class="player__quality-badge" id="qualityBadge">320</span>
                 </div>
             </div>
 
@@ -269,14 +249,10 @@
                 <div class="queue-modal__header">
                     <h3>Очередь</h3>
                     <button class="queue-modal__close" id="queueModalClose">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     </button>
                 </div>
-                <div class="queue-modal__list" id="queueList">
-                    <!-- Queue items will be rendered here -->
-                </div>
+                <div class="queue-modal__list" id="queueList"></div>
             </div>
         </div>
 
@@ -286,9 +262,7 @@
                 <div class="modal__header">
                     <h2>Новый плейлист</h2>
                     <button class="modal__close" id="closePlaylistModal">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                     </button>
                 </div>
                 <div class="modal__body">
@@ -301,7 +275,6 @@
         <!-- Context Menu -->
         <div class="context-menu" id="contextMenu">
             <button class="context-menu__item" data-action="addToQueue">Добавить в очередь</button>
-            <button class="context-menu__item" data-action="addToPlaylist">Добавить в плейлист</button>
             <button class="context-menu__item" data-action="addToFavorites">В избранное</button>
             <button class="context-menu__item" data-action="removeFromFavorites">Удалить из избранного</button>
         </div>
